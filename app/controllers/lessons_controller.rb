@@ -8,12 +8,13 @@ class LessonsController < ApplicationController
   def index
 if params[:plan_id]
 @lessons = Lesson.where(:plan_id => params[:plan_id])
+@plan_id=params[:plan_id]
 else
 @lessons = Lesson.all
 end
   respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @lessons }
+      format.json { render json: @lessons;@plan_id }
     end
   end
 
@@ -31,11 +32,13 @@ end
   # GET /lessons/new
   # GET /lessons/new.json
   def new
+    @plan_id= params[:plan_id]
     @lesson = Lesson.new
+    @lesson.plan_id=@plan_id
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @lesson }
+      format.json { render json: @lesson;@plan_id}
     end
   end
 

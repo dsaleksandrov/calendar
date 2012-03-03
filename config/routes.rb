@@ -5,7 +5,10 @@ Calendar::Application.routes.draw do
   resources :titul
   resources :reportn
 
-match 'local_lessons/:plan_id' => 'Lessons#index', :as => 'local_lessons' 
+match 'local_lessons/:plan_id' => 'Lessons#index', :as => 'local_lessons'
+match 'new_lesson_path/:plan_id' => 'Lessons#new', :as => 'new_lesson' 
+
+
 match 'local_report/:id' => 'Report#report', :as => 'local_report' 
 match 'local_titul/:id' => 'Titul#titul', :as => 'local_titul'
 match 'local_reportn/:id' => 'Reportn#reportn', :as => 'local_reportn'
