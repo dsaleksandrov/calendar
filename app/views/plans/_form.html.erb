@@ -1,0 +1,73 @@
+<%= form_for(@plan) do |f| %>
+  <% if @plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+
+      <ul>
+      <% @plan.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :predmet %><br />
+    <%= f.text_field :predmet %>
+  </div>
+  <div class="field">
+    <%= f.label :prepod %><br />
+    <%= f.text_field :prepod %>
+  </div>
+  <div class="field">
+    <%= f.label :spec %><br />
+    <%= f.text_field :spec %>
+  </div>
+  <div class="field">
+    <%= f.label :grups %><br />
+    <%= f.text_field :grups %>
+  </div>
+  <div class="field">
+    <%= f.label :kurs %><br />
+    <%= f.text_field :kurs %>
+  </div>
+  <div class="field">
+    <%= f.label :semestr %><br />
+    <%= f.text_field :semestr %>
+  </div>
+  <div class="field">
+    <%= f.label :god %><br />
+    <%= f.text_field :god %>
+  </div>
+  <div class="field">
+    <%= f.label :accepted %><br />
+    <%= f.text_field :accepted %>
+  </div>
+  <div class="field">
+    <%= f.label :week_count %><br />
+    <%= f.number_field :week_count %>
+  </div>
+  <div class="field">
+    <%= f.label :lecture_count %><br />
+    <%= f.number_field :lecture_count %>
+  </div>
+  <div class="field">
+    <%= f.label :labs_count %><br />
+    <%= f.number_field :labs_count %>
+  </div>
+  <div class="field">
+    <%= f.label :kurs_project %><br />
+    <%= f.number_field :kurs_project %>
+  </div>
+  <div class="field">
+    <%= f.label :itself_load %><br />
+    <%= f.number_field :itself_load %>
+  </div>
+  <div class="field">
+    <%= f.label :literature %><br />
+    <%= f.text_field :literature %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

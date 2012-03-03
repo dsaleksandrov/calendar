@@ -1,0 +1,53 @@
+<%= form_for(@lesson) do |f| %>
+  <% if @lesson.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
+
+      <ul>
+      <% @lesson.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :lesson_number %><br />
+    <%= f.number_field :lesson_number %>
+  </div>
+  <div class="field">
+    <%= f.label :part_name %><br />
+    <%= f.text_field :part_name %>
+  </div>
+  <div class="field">
+    <%= f.label :weeks_number %><br />
+    <%= f.number_field :weeks_number %>
+  </div>
+  <div class="field">
+    <%= f.label :hours_count %><br />
+    <%= f.number_field :hours_count %>
+  </div>
+  <div class="field">
+    <%= f.label :lesson_type %><br />
+    <%= f.text_field :lesson_type %>
+  </div>
+  <div class="field">
+    <%= f.label :manual %><br />
+    <%= f.text_field :manual %>
+  </div>
+  <div class="field">
+    <%= f.label :student_tasks %><br />
+    <%= f.text_field :student_tasks %>
+  </div>
+  <div class="field">
+    <%= f.label :student_homeworks %><br />
+    <%= f.text_field :student_homeworks %>
+  </div>
+  <div class="field">
+    <%= f.label :plan_id %><br />
+    <%= f.number_field :plan_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

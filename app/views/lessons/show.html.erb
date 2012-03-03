@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Lesson number:</b>
+  <%= @lesson.lesson_number %>
+</p>
+
+<p>
+  <b>Part name:</b>
+  <%= @lesson.part_name %>
+</p>
+
+<p>
+  <b>Weeks number:</b>
+  <%= @lesson.weeks_number %>
+</p>
+
+<p>
+  <b>Hours count:</b>
+  <%= @lesson.hours_count %>
+</p>
+
+<p>
+  <b>Lesson type:</b>
+  <%= @lesson.lesson_type %>
+</p>
+
+<p>
+  <b>Manual:</b>
+  <%= @lesson.manual %>
+</p>
+
+<p>
+  <b>Student tasks:</b>
+  <%= @lesson.student_tasks %>
+</p>
+
+<p>
+  <b>Student homeworks:</b>
+  <%= @lesson.student_homeworks %>
+</p>
+
+<p>
+  <b>Plan:</b>
+  <%= @lesson.plan_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
+<%= link_to 'Back', lessons_path %>

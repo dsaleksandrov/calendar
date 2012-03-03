@@ -1,4 +1,16 @@
 Calendar::Application.routes.draw do
+  resources :plans 
+  resources :lessons
+  resources :report
+  resources :titul
+  resources :reportn
+
+match 'local_lessons/:plan_id' => 'Lessons#index', :as => 'local_lessons' 
+match 'local_report/:id' => 'Report#report', :as => 'local_report' 
+match 'local_titul/:id' => 'Titul#titul', :as => 'local_titul'
+match 'local_reportn/:id' => 'Reportn#reportn', :as => 'local_reportn'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +60,7 @@ Calendar::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+   
 
   # See how all your routes lay out with "rake routes"
 

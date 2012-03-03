@@ -1,0 +1,183 @@
+    <link rel="stylesheet" href="print.css" type="text/css">
+    <link rel="stylesheet" href="style.css" type="text/css">
+ <a href="#" onclick="print(); return false;" style="font-size:5px;">версия для печати</a>
+
+  <style type="text/css">
+    .printdiv{
+      font-size:10px; padding-left:15px; padding-top:10px; font-style:italic;
+     }
+     .printspan{width:90%;font-size:10px;height:11px; }
+
+     .customH3{vertical-align:top;padding-left:25%;font-size:15px;}
+
+     .textdiv{font-size:10px;}
+  </style>
+
+<table style="width:50%;margin-left:50%"> 
+<tr>
+<td colspan=2>
+<div style="padding-left:34%; vertical-align:top;font-size:15px;">СЕРГИЕВО-ПОСАДСКИЙ</div>
+</td>
+</tr>
+
+<tr>
+<td colspan=2>
+<div class="customH3">КИНО-ВИДЕОТЕХНИЧЕСКИЙ КОЛЛЕДЖ</div>
+</td>
+</tr>
+
+
+
+
+
+<!--table1-->
+
+  <tr>
+  <td>
+  <div style="text-align: center;font-size:10px; font-weight:bold">УТВЕРЖДАЮ</div>
+  <div style="text-align: center;font-size:10px;font-weight:bold">Зам.директора</div>
+  <div style="text-align: center;font-size:10px;font-weight:bold">по учебной работе</div>
+  <div style="text-align: center;">__________________________</div>
+  <div style="text-align: center;"><<___>> ____________20__г.</div>
+  </td>
+  
+  <td style="">
+  <div style="text-align: center;font-size:10px; font-weight:bold">Рассмотрено на заседании</div>
+  <div style="text-align: center;font-size:10px; font-weight:bold">Предметной комиссии</div>
+  <div style="text-align: center; font-size:10px; font-weight:bold padding-top:10px;"><<_____>> _______________20__г.</div>
+  <div style="text-align: center;font-size:10px; font-weight:bold">Протокол №____________________</div>
+  <div style="text-align: center;font-size:10px; font-weight:bold">Председатель предметной комиссии</div>
+  <div style="text-align: center;font-size:10px; font-weight:bold">______________________________</div>
+  </td>
+
+
+ </tr>
+ 
+ <tr>
+  <td colspan=2 style="text-align: center;font-size:12px; padding-top:10px;padding-bottom:10px;">
+  КАЛЕНДАРНЫЙ ПЛАН
+  </td>
+</tr>
+
+<tr VALIGN="TOP">
+    <td class="textdiv">
+    Учебных занятий по предмету
+    </td>
+    <td class="textdiv">
+    <span class="input-xlarge uneditable-input printspan"><%= @plan.predmet %></span>
+    </td>
+ </tr>
+
+<tr>
+    <td class="textdiv">
+    Для специальности
+    </td>
+    <td class="textdiv">
+    <span class="input-xlarge uneditable-input printspan"><%= @plan.spec %></span>
+    </td>
+ </tr>
+
+
+<tr>
+    <td class="textdiv">
+    Преподаватель
+    </td>
+    <td class="textdiv">
+    <span class="input-xlarge uneditable-input printspan"><%= @plan.prepod %></span>
+    </td>
+ </tr>
+
+
+ <tr>
+    <td class="textdiv">
+    Группы
+    </td>
+    <td class="textdiv">
+    <span class="input-xlarge uneditable-input printspan"><%= @plan.grups %></span>
+    </td>
+ </tr>
+
+ <tr>
+    <td class="textdiv">
+     Группы
+    </td>
+    <td>
+     <span class="input-xlarge uneditable-input printspan"><%= @plan.grups %></span>
+    </td>
+ </tr>
+
+ <tr>
+    <td class="textdiv">
+     Группы
+    </td>
+    <td>
+     <span class="input-xlarge uneditable-input printspan"><%= @plan.grups %></span>
+    </td>
+ </tr>
+
+ <tr>
+    <td class="textdiv">
+    Курс
+    </td>
+    <td>
+    <span class="input-xlarge uneditable-input printspan"><%= @plan.kurs %></span>
+    </td>
+ </tr>
+
+<tr>
+    <td class="textdiv">
+    Семестр
+    </td>
+    <td>
+     <span class="input-xlarge uneditable-input printspan"><%= @plan.semestr %></span>
+    </td>
+ </tr>
+
+
+<tr>
+    <td class="textdiv">
+     Учебный год
+    </td>
+    <td>
+    <span class="input-xlarge uneditable-input printspan" ><%= @plan.god %></span>
+    </td>
+ </tr>
+
+  
+ 
+ <tr>
+ <td colspan=2 class="textdiv">
+Составлено в соответствии с программой, утвержденной
+ </td>
+</tr>
+
+ <tr>
+ <td colspan=2>
+ <span class="input-xlarge uneditable-input printspan" style="text-align:center;margin-left:30px;"><%= @plan.accepted %></span>
+ </td>
+</tr>
+    
+ <tr>
+    <td class="textdiv">
+     Число недель
+    </td>
+    <td>
+     <span class="input-xlarge uneditable-input printspan" style="width:250px;"><%= @plan.week_count %></span>
+    </td>
+ </tr>
+
+
+ <tr>
+    <td class="textdiv">
+     Число занятий на уроках 
+    </td>
+    <td>
+     <span class="input-xlarge uneditable-input printspan" style="width:250px;"><%= @plan.lecture_count %></span> 
+    </td>
+ </tr>
+  
+ 
+
+ </table>
+
+ 

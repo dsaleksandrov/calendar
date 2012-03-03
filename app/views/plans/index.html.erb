@@ -1,0 +1,93 @@
+<h1 style="padding-bottom:50px;">Планы</h1>
+
+
+<div class="tabbable tabs-left">
+  <ul class="nav nav-tabs">
+   <% @plans.each do |plan| %>
+    <%if (plan==@plans.first)%>
+    <li class="active"><a href="#<%= plan.id %>" data-toggle="tab"><%= plan.predmet %></a></li>
+      <%else%>
+        <li class=""><a href="#<%= plan.id %>" data-toggle="tab"><%= plan.predmet %></a></li>
+            <%end%>
+         <% end %>
+        </ul>
+        <div class="tab-content">
+          <% @plans.each do |plan| %>
+        <%if (plan==@plans.first)%>
+          
+ <div class="tab-pane active" id='<%= plan.id %>'>
+         <%else%>
+          <div class="tab-pane" id='<%= plan.id %>'>
+ <%end%>
+        
+        
+        
+          <table class="table table-striped table-bordered table-condensed" style="width:70%;">
+             <thead>
+  <tr>
+    <th>Predmet</th>
+    <th>Prepod</th>
+    <th>Spec</th>
+    <th>Grups</th>
+    <th>Kurs</th>
+    <th>Semestr</th>
+    <th>God</th>
+    <th>Accepted</th>
+    <th>Week count</th>
+    <th>Lecture count</th>
+    <th>Labs count</th>
+    <th>Kurs project</th>
+    <th>Itself load</th>
+    <th>Literature</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+ 
+  <tr >
+    <td><%= plan.predmet %></td>
+    <td><%= plan.prepod %></td>
+    <td><%= plan.spec %></td>
+    <td><%= plan.grups %></td>
+    <td><%= plan.kurs %></td>
+    <td><%= plan.semestr %></td>
+    <td><%= plan.god %></td>
+    <td><%= plan.accepted %></td>
+    <td><%= plan.week_count %></td>
+    <td><%= plan.lecture_count %></td>
+    <td><%= plan.labs_count %></td>
+    <td><%= plan.kurs_project %></td>
+    <td><%= plan.itself_load %></td>
+    <td><%= plan.literature %></td>
+    
+    <td> <p><%= link_to "Show lessons",local_lessons_path(plan)%></p></td>
+
+    <td><%= link_to 'Show', plan %></td>
+    <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
+    <td><%= link_to 'Destroy', plan, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+    </tbody>
+ </table>
+
+<%= link_to "Распечатать титульник",local_titul_path(plan)%></p></td>
+<%= link_to "Распечтать отчет, четная сторона",local_report_path(plan)%></p></td>
+
+<%= link_to "Распечтать отчет, нечетная сторона",local_reportn_path(plan)%></p></td>
+
+ </div>
+
+ <% end %>     
+ </div>
+</div>
+
+
+ 
+
+<br />
+
+<%= link_to 'Создать новый план', new_plan_path %>
