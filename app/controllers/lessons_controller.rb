@@ -54,8 +54,9 @@ end
 
     respond_to do |format|
       if @lesson.save
-        format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }
-        format.json { render json: @lesson, status: :created, location: @lesson }
+        plan_id=@lesson.plan_id
+        format.html { redirect_to local_lessons_path(plan_id)}
+        format.json { head :no_content}
       else
         format.html { render action: "new" }
         format.json { render json: @lesson.errors, status: :unprocessable_entity }
@@ -83,10 +84,11 @@ end
   # DELETE /lessons/1.json
   def destroy
     @lesson = Lesson.find(params[:id])
-    @lesson.destroy
+    @plan_id=@lesson.plan_id
+     @lesson.destroy
 
     respond_to do |format|
-      format.html { redirect_to lessons_url }
+      format.html { redirect_to local_lessons_path(@plan_id) }
       format.json { head :no_content }
     end
   end
