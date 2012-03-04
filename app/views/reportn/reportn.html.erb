@@ -23,10 +23,16 @@
 <%@ourPagesSize=@lessSize/6%><!--общее число страниц-->
 <%if !((@lessSize%6).zero?)%>
 <%@lastRecSize=@lessSize-(@npageSize*6)%><!--сколько будет печати для последней страницы-->
-<%@npageSize=(@npageSize+1)/2%>   
+ <%@npageSize=(@npageSize+1)/2%>   
 <%@orPage=  @npageSize%><!--Сколько всего итераций-->
 
 <!--если итераций без остатка (на последней странице 6 записей)-->
+
+
+<%if@lessSize>=19%>
+<%@ourPagesSize=4%>
+<%end%>
+
 <%else%>
 <%@npageSize=@npageSize/2%>
 <%end%>
@@ -35,7 +41,7 @@
 <%if @lastRecSize==nil%>
 <%@lastRecSize=0%>
 <%end%>
-
+ 
 <!--if lessons size <6-->
 <%if @npageSize==0%>
 <%@npageSize=1%>
@@ -43,9 +49,6 @@
 <%end%>
 
 
-<%if @npageSize<4%>
-<%@lastRecSize=0%>
-<%end%>
 
 
 
@@ -97,8 +100,7 @@ until @npageSize == 0
 
  
 
-
-<!--begin (Если первые записи и их не 6 штук)-->
+ <!--begin (Если первые записи и их не 6 штук)-->
 <%if @lastRecSize!=0 and @nechet==0  %>
 <h5>assdfsd</h5>
  <% @plan.lessons.each do |lesson| %>

@@ -28,6 +28,12 @@
 <%@ourPagesSize=2%>
 <%end%>
 
+<%if @ourPagesSize==2 and @lessSize>6 and @lessSize<19%>
+<%@ourPagesSize=3%>
+<%end%>
+
+
+
 
 <%if !((@lessSize%6).zero?)%>
 <%@lastRecSize=@lessSize-(@npageSize*6)%><!--сколько будет печати для последней страницы-->
@@ -50,17 +56,24 @@
 
 
 <!--if lessons size <6-->
-<%if @npageSize==0%>
-<%@npageSize=1%>
-<%@orPage=1%>
+<%if @ourPagesSize=3%>
+<%@npageSize=2%>
+<%@orPage=2%>
 <%end%>
-
-
-
 
 <%if @npageSize<4%>
 <%@lastRecSize=0%>
 <%end%>
+
+<%if @npageSize<4%>
+<%@lastRecSize=0%>
+<%end%>
+
+
+
+
+
+
 
 <h5>Last Record size (ostatok): <%=@lastRecSize%> </h5>
 
@@ -68,10 +81,13 @@
 <h5>Lesson size <%=@lessSize%> </h5>
 <h5>Pages size:<%=@npageSize%> </h5>
 <h5>plan.lessons.size: <%=@plan.lessons.size%> </h5>
+<h5>ourpagessize: <%=@ourPagesSize%> </h5>
 
 
 
-<%if @ourPagesSize>=4%>
+
+
+<%if @ourPagesSize>=3 and @lessSize>18%>
 <%
 until @npageSize == 0
 %>
@@ -120,7 +136,7 @@ until @npageSize == 0
 <%@npageSize=@npageSize-1%>
 </td>
 
-
+ 
 <!--!!!!!!!!!!!!!другая сторона!!!!!!!!!!!!!!!-->
 <td valign="top">
 <table style="width:50%;"class="table table-striped table-bordered table-condensed"> 
@@ -140,7 +156,7 @@ until @npageSize == 0
  <% tmp_chet=@chet%>
  <% @plan.lessons.each do |lesson| %>
 
-<%@idx=@plan.lessons.index(lesson)%>
+<%@idx=@plan.lessons.index(lesson)+1%>
 <%if @idx>=(@lessSize-(tmp_chet+6)) and @idx<(@lessSize-tmp_chet)%>
   <tr  style="font-size:5px;">
     <td style="font-size:10px;height:50px;"><i><%=lesson.lesson_number%></i></td>
@@ -170,7 +186,7 @@ until @npageSize == 0
 <%end%> <!--конец общего цикла по всем страничкам-->
 <%end%>
 <!--если страниц мало, не больше 3-х-->
-<%if @ourPagesSize>=2 and @ourPagesSize<=3%>
+<%if @ourPagesSize>=2 and @ourPagesSize<=3 and @lessSize<19%>
  
 <%
 until @npageSize == 0
@@ -199,7 +215,7 @@ until @npageSize == 0
  <% @plan.lessons.each do |lesson| %>
 <%@idx=@plan.lessons.index(lesson)+1%>
 
-<%if (@idx>6) and (@iter<=6)%>
+<%if (@idx>6) and (@iter<=5)%>
   <tr  style="font-size:5px;">
     <td style="font-size:10px;height:50px;"><i><%=lesson.lesson_number%></i></td>
     <td style="font-size:10px;height:50px;"><i><%=lesson.part_name%></i></td>
@@ -220,10 +236,58 @@ until @npageSize == 0
 <%@lastRecSize=0%>
 <%@npageSize=@npageSize-1%>
 </td>
+<!--конец первой стороны-->
+<!-- правая сторона-->
+
+<%if @npageSize>0%>
+<td valign="top">
+<table style="width:50%;"class="table table-striped table-bordered table-condensed"> 
+    <tr>
+    <th style="height: 100px; width: 5px; font-weight: normal;text-align: center;" >№ урока</th>
+    <th style="height: 100px;font-weight: normal; text-align: center;" >Наименование разделов и тем</th>
+    <th style="height: 100px; width: 5px;  font-weight: normal; text-align: center;" >Номера недель</th>
+    <th style="height: 100px; width: 5px; font-weight: normal;">Колличество часов</th>
+    <th style="height: 100px; width: 5px;font-weight: normal; text-align: center;" >Вид занятий</th>
+    <th style="height: 100px; width: 5px;font-weight: normal; text-align: center;" >Наглядные пособия</th>
+    <!--<th style="height: 50px; width: 5px;font-weight: normal;text-align: center;">Задание для студентов</th>-->
+    <th style="height: 100px; width: 5px;font-weight: normal;text-align: center;">Задания</th>
+    <th style=" font-weight: normal;text-align: center; width:10px; ">Самостоят.работа</th>
+  </tr>
+
+ <!--end-->
  
+ 
+ <%@iter=0%> 
+ <% @plan.lessons.each do |lesson| %>
+<%@idx=@plan.lessons.index(lesson)+1%>
 
-<!--конец другой стороны-->
+<%if (@idx>12) and (@iter<=6)%>
+  <tr  style="font-size:5px;">
+    <td style="font-size:10px;height:50px;"><i><%=lesson.lesson_number%></i></td>
+    <td style="font-size:10px;height:50px;"><i><%=lesson.part_name%></i></td>
+    <td style="font-size:10px;height:50px;"><i><%=lesson.weeks_number%></i></td>
+    <td style="font-size:10px;height:50px;"><i><%=lesson.hours_count%></i></td>
+    <td style="font-size:10px;height:50px;"><i><%=lesson.lesson_type%></i></td>
+    <td style="font-size:10px;height:50px;"><i><%=lesson.manual%></i></td>
+    <td style="font-size:10px;height:50px"><i><%=lesson.student_tasks%></i></td>
+    <td style="font-size:10px; height:50px;"><i><%=lesson.student_homeworks%></i></td>
+  </tr>
+   <%@nechet=@nechet+1%>
+   <%@iter=@iter+1%>
+   <%end%>
+ <%end%>
+ 
+  </table>
+<%@lastRecSize=0%>
+<%@npageSize=@npageSize-1%>
+</td>
+<%end%>
 
+
+
+
+
+<!--конец правой стороны-->
 </tr>
 </table>
 
