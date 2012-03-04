@@ -1,7 +1,4 @@
-<h1>Listing lessons</h1>
-
-@<%=@plan_id%>
-<table class="table table-striped table-bordered table-condensed">
+<table class="table table-striped table-bordered table-condensed" style="margin-top:10px;">
   <tr>
     <th>Lesson number</th>
     <th>Part name</th>
@@ -37,4 +34,4 @@
 
 <br />
 
-<%= link_to 'New Lesson', new_lesson_path(@plan_id) %>
+<%= link_to 'Вернуться к планам', plans_path %> | <%= link_to 'Добавить новый урок', new_lesson_path(@plan_id) %>
