@@ -23,13 +23,29 @@
 <%if !((@lessSize%6).zero?)%>
 <%@lastRecSize=@lessSize-(@npageSize*6)%><!--сколько будет печати для последней страницы-->
 <%@npageSize=(@npageSize+1)/2%>   
-<%@orPage=  @npageSize%>                                      <!--Сколько всего итераций-->
+<%@orPage=  @npageSize%><!--Сколько всего итераций-->
+
+<!--если итераций без остатка (на последней странице 6 записей)-->
+<%else%>
+<%@npageSize=@npageSize/2%>
 <%end%>
 
 
-<h5>L: <%=@lastRecSize%> </h5>
-<h5><%=@lessSize%> </h5>
-<h5>P:<%=@npageSize%> </h5>
+
+
+<!--if firs page size equal 6-->
+<%if @lastRecSize==nil%>
+<%@lastRecSize=0%>
+<%end%>
+
+<h5>Last Record size (ostatok): <%=@lastRecSize%> </h5>
+
+
+<h5>Lesson size <%=@lessSize%> </h5>
+<h5>Pages size:<%=@npageSize%> </h5>
+<h5>plan.lessons.size: <%=@plan.lessons.size%> </h5>
+
+
 
 
 <%
@@ -62,7 +78,7 @@ until @npageSize == 0
 
 
 <!--begin (Если первые записи и их не 6 штук)-->
-<%if @lastRecSize!=0%>
+<%if @lastRecSize!=0 and @nechet==0  %>
  <% @plan.lessons.each do |lesson| %>
 <%@idx=@plan.lessons.index(lesson)%>
   <%if (@lessSize-@idx<=@lastRecSize)and (@npageSize==@orPage)%><!--если последняя страница-->
@@ -83,7 +99,7 @@ until @npageSize == 0
 <!--END-->
 
 <!--begin (Если не первые записи)-->
-<%if @lastRecSize==0%>
+<%if @lastRecSize==0 and@nechet>0 %>
  <% @plan.lessons.each do |lesson| %>
 <%@idx=@plan.lessons.index(lesson)%>
 <%if (@nechet>0) and (@idx>@nechet+6)and(@idx<=@nechet+12)%>
@@ -105,10 +121,13 @@ until @npageSize == 0
 
 
 <!--begin (Если первые записи и их ровно 6)-->
-<%if @lastRecSize==0%>
+<%if @lastRecSize==0 and  @nechet==0  %>
+
+ <% tmp_chet=@nechet%>
  <% @plan.lessons.each do |lesson| %>
+
 <%@idx=@plan.lessons.index(lesson)%>
-<%if (@nechet==0) and (@idx<=@nechet+6)%>
+<%if @idx>=(@lessSize-(tmp_chet+6)) and @idx<(@lessSize-tmp_chet)%>
   <tr  style="font-size:5px;">
     <td style="font-size:10px;height:50px;"><i>size=<%=@plan.lessons.size%>____<%=lesson.lesson_number%></i></td>
     <td style="font-size:10px;height:50px;"><i><%=lesson.part_name%></i></td>
@@ -137,7 +156,7 @@ until @npageSize == 0
 <%@lastRecSize=0%>
 <%@npageSize=@npageSize-1%>
 </td>
-
+<!-- (другая сторона)-->
 <!-- если уже не первый лист -->
 <%if (@npageSize>0)%> <!-- если больше чем 1 лист и больше -->
  <!--another pageside-->
