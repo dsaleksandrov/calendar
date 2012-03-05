@@ -87,8 +87,7 @@ until @npageSize == 0
 
  <!--begin (Если первые записи и их не 6 штук)-->
 <%if @lastRecSize!=0 and @nechet==0  %>
-<h5>assdfsd</h5>
- <% @plan.lessons.each do |lesson| %>
+  <% @plan.lessons.each do |lesson| %>
 <%@idx=@plan.lessons.index(lesson)%>
   <%if (@lessSize-@idx<=@lastRecSize)and (@npageSize==@orPage)%><!--если последняя страница-->
     <tr  style="font-size:5px;">
