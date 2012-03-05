@@ -1,14 +1,13 @@
 <table class="table table-striped table-bordered table-condensed" style="margin-top:10px;">
   <tr>
-    <th>Lesson number</th>
-    <th>Part name</th>
-    <th>Weeks number</th>
-    <th>Hours count</th>
-    <th>Lesson type</th>
-    <th>Manual</th>
-    <th>Student tasks</th>
-    <th>Student homeworks</th>
-    <th>Plan</th>
+    <th>№ урока</th>
+    <th>Наименование разделов и тем</th>
+    <th>Номера недель</th>
+    <th>Кол-во часов</th>
+    <th>Вид занятий</th>
+    <th>Наглядные пособия</th>
+    <th>Задания для студентов</th>
+    <th>Самостоятельная работа для студентов</th>
     <th></th>
     <th></th>
     <th></th>
@@ -24,10 +23,9 @@
     <td><%= lesson.manual %></td>
     <td><%= lesson.student_tasks %></td>
     <td><%= lesson.student_homeworks %></td>
-    <td><%= lesson.plan_id %></td>
-    <td><%= link_to 'Show', lesson %></td>
-    <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
-    <td><%= link_to 'Destroy', lesson, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Открыть', lesson %></td>
+    <td><%= link_to 'Редактировать', edit_lesson_path(lesson) %></td>
+    <td><%= link_to 'Удалить', lesson, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
